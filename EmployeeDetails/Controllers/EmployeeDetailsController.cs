@@ -36,16 +36,7 @@ namespace EmployeeDetails.Controllers
                 return StatusCode(500, $"An error occurred while processing your request: {ex.Message}");
             }
         }
-        [HttpGet]
-        [Route("getBaseUrl")]
-        public string GetBaseUrl()
-        {
-            var request = HttpContext.Request;
-
-            var baseUrl = $"{request.Scheme}://{request.Host}:{request.PathBase.ToUriComponent()}";
-
-            return baseUrl;
-        }
+       
 
         [HttpGet]
         public async Task<IActionResult> GetEmployees()

@@ -16,7 +16,7 @@ namespace EmployeeDetails.ViewModel
         public Gender Gender { get; set; }
         public decimal ? AnnualSalaryAmount { get; set; }
 
-        public List<SalaryPaid> ? SalariesPaid
+        public List<SalaryPaidListModel> ? SalariesPaid
         {
             get; set;
         }

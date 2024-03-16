@@ -4,7 +4,7 @@ using EmployeeDetailsApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
-
+using System.Text;
 
 namespace EmployeeDetailsApp.Controllers
 {
@@ -31,6 +31,36 @@ namespace EmployeeDetailsApp.Controllers
                 
             }   
             return View(employees);
+        }
+
+        [HttpGet]
+        public ActionResult Create() {
+
+
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(EmployeeViewModel model)
+        {
+            try
+            {
+                string data = JsonConvert.SerializeObject(model);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = _client.PostAsync(_client.BaseAddress + "/EmployeeDetails/PostEmployee", content).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "Employee details Added Successfully";
+                    return RedirectToAction("Index");
+                }
+            }
+            catch(Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            return View();
         }
     }
 }

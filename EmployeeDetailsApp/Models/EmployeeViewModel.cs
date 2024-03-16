@@ -1,4 +1,5 @@
 ﻿
+using EmployeeDetails.Models;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -25,14 +26,21 @@ namespace EmployeeDetailsApp.Models
         [Required]
         [DisplayName("Joining Date")]
         public DateTime StartDate { get; set; }
-        [Required]
+      
         [DisplayName("Annual Salary")]
+        public decimal? AnnualSalaryAmount { get; set; }
+
+        [DisplayName("Monthly Salary")]
+        public decimal? MonthlySalaryAmount { get; set; }
+        public Month Month { get; set; }
         public AnnualSalaryViewModel? AnnualSalary { get; set; }
+       // public AnnualSalary? AnnualSalary { get; set; }
         [Required]
         [DisplayName("Gender")]
         public Gender Gender { get; set; }
         [DisplayName("Salary Paid")]
         public List<SalaryPaidViewModel>? SalariesPaid { get; set; }
+        
 
     }
     public enum Gender

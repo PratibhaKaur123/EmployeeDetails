@@ -7,8 +7,8 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
-</p>
+    <a asp-action="Create">Create New Employee</a>
+</p> 
 <table class="table">
     <thead>
         <tr>
@@ -33,6 +33,11 @@
             <th>
                 @Html.DisplayNameFor(model => model.Gender)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnualSalary)
+            </th>
+           
+
             <th></th>
         </tr>
     </thead>
@@ -60,11 +65,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Gender)
             </td>
-            <td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnnualSalaryAmount)
+                </td>
+           
+            @* <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
+            </td> *@
         </tr>
 }
     </tbody>

@@ -25,6 +25,7 @@ namespace EmployeeDetails.Employees
 
             var employeeDetailsList = employee.Select(e => new EmployeeDetailsModel
             {
+                Id = e.Id,
                 FirstName = e.FirstName,
                 SurName = e.SurName,
                 DateOfBirth = e.DOB,
@@ -32,9 +33,17 @@ namespace EmployeeDetails.Employees
                 Address = e.Address,
                 JoiningDate = e.StartDate,
                 AnnualSalaryAmount = e.AnnualSalary.AnnualSalaryAmount,
-                SalariesPaid = e.SalariesPaid
+                SalariesPaid = e.SalariesPaid.Select(salaryPaidModel => new SalaryPaidListModel
+                {
+                    Month = salaryPaidModel.Month,
+                    PaidDays = salaryPaidModel.PaidDays,
+                    Amount = salaryPaidModel.Amount,
+                    IncludeLastMonthSalary = salaryPaidModel.IncludeLastMonthSalary,
+                    LastMonthSalary = salaryPaidModel.LastMonthSalary,
+                    EmployeeId = e.Id
+                }).ToList()
 
-            });
+            }) ;
 
             return employeeDetailsList;
         }
@@ -55,7 +64,7 @@ namespace EmployeeDetails.Employees
             }
                 var employeeDetails = new EmployeeDetailsModel
                 {
-
+                    Id =employee.Id,
                     FirstName = employee.FirstName,
                     SurName = employee.SurName,
                     DateOfBirth = employee.DOB,
@@ -63,9 +72,17 @@ namespace EmployeeDetails.Employees
                     Address = employee.Address,
                     JoiningDate = employee.StartDate,
                     AnnualSalaryAmount = employee.AnnualSalary.AnnualSalaryAmount,
-                    SalariesPaid = employee.SalariesPaid
+                    SalariesPaid = employee.SalariesPaid.Select(salaryPaidModel => new SalaryPaidListModel
+                    {
+                        Month = salaryPaidModel.Month,
+                        PaidDays = salaryPaidModel.PaidDays,
+                        Amount = salaryPaidModel.Amount,
+                        IncludeLastMonthSalary = salaryPaidModel.IncludeLastMonthSalary,
+                        LastMonthSalary = salaryPaidModel.LastMonthSalary,
+                        EmployeeId = employee.Id
+                    }).ToList()
 
-                };
+        };
                 return employeeDetails;
             }
 

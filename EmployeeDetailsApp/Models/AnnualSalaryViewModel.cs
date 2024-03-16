@@ -13,7 +13,7 @@ namespace EmployeeDetailsApp.Models
             [Required]
             public int EmployeeId { get; set; }
             [JsonIgnore]
-            public Employee Employee { get; set; }
+            public EmployeeViewModel Employee { get; set; }
 
 
        
